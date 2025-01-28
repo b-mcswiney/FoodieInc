@@ -6,4 +6,5 @@ import com.backend.foodie.entity.Users;
 
 public interface UsersRepo extends JpaRepository<Users, Integer> {
 	public Users findByUsername(String username);
+	public boolean existsByUsername(String username);
 }
