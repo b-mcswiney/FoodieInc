@@ -23,7 +23,7 @@ public class RestaurantService {
 	public Restaurants getById(int id) {
 		if(!repo.existsById(id))
 			throw new EntityNotFoundException("Cannot find "+id);
-		return repo.getReferenceById(id);
+		return repo.findById(id).get();
 	}
 	
 	public Restaurants addNewRestaurant(Restaurants newRestaurant) {

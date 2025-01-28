@@ -2,6 +2,7 @@ package com.backend.foodie.controller;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,48 +16,53 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.foodie.entity.Users;
-import com.backend.foodie.service.UserService;
+import com.backend.foodie.entity.Restaurants;
+import com.backend.foodie.service.RestaurantService;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/restaurants")
+public class RestaurantsController {
 	@Autowired
-	private UserService service;
+	private RestaurantService service;
 	
-	@GetMapping("/{username}")
-	public ResponseEntity<Object> getByUsername(@PathVariable String username){
+	@GetMapping
+	private ResponseEntity<Object> getAllRestaurants(){
+		List<Restaurants> restaurants = service.getAllRestaurants();
+		return ResponseEntity.ok(restaurants);
+	}
+	
+	@GetMapping("/{id}")
+	private ResponseEntity<Object> getRestaurantById(@PathVariable int id){
 		try {
-			Users user = service.getUserByName(username);
-			return ResponseEntity.ok(user);
+			Restaurants restaurant = service.getById(id);
+			return ResponseEntity.ok(restaurant);
 		} catch(EntityNotFoundException e) {
 			Map<String, String> errorMap = new HashMap<>();
-			errorMap.put("status", "404");
 			errorMap.put("error", e.getMessage());
 			return ResponseEntity.badRequest().body(errorMap);
 		}
 	}
 	
-	@PostMapping()
-	public ResponseEntity<Object> addNewUser(@RequestBody Users newUser){
+	@PostMapping
+	public ResponseEntity<Object> addNewRestaurant(@RequestBody Restaurants toAdd){
 		try {
-			Users user = service.addUser(newUser);
-			return ResponseEntity.ok(user);
+			Restaurants added = service.addNewRestaurant(toAdd);
+			return ResponseEntity.ok(added);
 		} catch(EntityExistsException e) {
 			Map<String, String> errorMap = new HashMap<>();
 			errorMap.put("error", e.getMessage());
 			return ResponseEntity.badRequest().body(errorMap);
 		}
 	}
-
-	@PutMapping()
-	public ResponseEntity<Object> updateUser(@RequestBody Users newUser){
+	
+	@PutMapping
+	public ResponseEntity<Object> updateRestaurant(@RequestBody Restaurants toUpdate){
 		try {
-			Users user = service.updateUser(newUser);
-			return ResponseEntity.ok(user);
+			Restaurants updated = service.updateRestaurant(toUpdate);
+			return ResponseEntity.ok(updated);
 		} catch(EntityNotFoundException e) {
 			Map<String, String> errorMap = new HashMap<>();
 			errorMap.put("error", e.getMessage());
@@ -68,7 +74,7 @@ public class UserController {
 	public ResponseEntity<Object> deleteUser(@PathVariable int id){
 		Map<String, String> map = new HashMap<>();
         try {
-            service.deleteUser(id);
+            service.deleteRestaurant(id);
             map.put("message", "Delete successful");
             return ResponseEntity.ok(map);
         }catch (EntityNotFoundException  e){
