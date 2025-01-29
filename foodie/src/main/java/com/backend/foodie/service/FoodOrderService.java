@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.backend.foodie.entity.FoodOrders;
 import com.backend.foodie.repo.FoodOrdersRepo;
 
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
@@ -23,6 +24,12 @@ public class FoodOrderService {
 		if(!repo.existsById(id))
 			throw new EntityNotFoundException("Cannot find "+id);
 		return repo.findById(id).get();
+	}
+	
+	public FoodOrders addFoodOrder(FoodOrders toAdd) {
+		if(repo.existsById(toAdd.getId()))
+			throw new EntityExistsException(toAdd.getId()+" Already exist");
+		return repo.save(toAdd);
 	}
 	
 	public FoodOrders updateFoodOrder(FoodOrders toUpdate) {
