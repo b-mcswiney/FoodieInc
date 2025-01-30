@@ -5,17 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RestaurantService {
-
-  url:string = "http://localhost:8080/restaurants"
+export class MenuService {
+  url:string = "http://localhost:8080/menu"
 
   constructor(private http:HttpClient) { }
 
-  getAllRestaurants():Observable<any> {
+  getAllMenuItems():Observable<any> {
     return this.http.get<any>(this.url);
   }
 
-  getRestaurantById(id:Number):Observable<any>{
-    return this.http.get<any>(this.url+"/"+id);
+  getMenuItemsByRestaurant(id:Number):Observable<any> {
+    return this.http.get<any>(this.url + "/restaurant/" + id);
   }
 }

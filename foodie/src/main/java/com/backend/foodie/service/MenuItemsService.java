@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.backend.foodie.entity.MenuItems;
+import com.backend.foodie.entity.Restaurants;
 import com.backend.foodie.repo.MenuItemsRepo;
 
 import jakarta.persistence.EntityExistsException;
@@ -24,6 +25,10 @@ public class MenuItemsService {
 		if(!repo.existsById(id))
 			throw new EntityNotFoundException("Cannot find "+id);
 		return repo.findById(id).get();
+	}
+	
+	public List<MenuItems> getByRestaurant(Restaurants restaurant){
+		return repo.findByRestaurant(restaurant);
 	}
 	
 	public MenuItems addNewMenuItem(MenuItems newMenuItem) {

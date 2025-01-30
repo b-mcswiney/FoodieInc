@@ -1,0 +1,12 @@
+<h1>{{restaurant.name}}</h1>
+<p>{{restaurant.description}}</p>
+<p>Location: {{restaurant.address}}</p>
+<p>Rating: {{restaurant.rating}}</p>
+<h2>Menu!</h2>
+<div *ngFor="let item of menuItems">
+    <div class="card">
+        <h6>{{item.name}}</h6>
+        <p>£{{item.price}}</p>
+    </div>
+    <p>{{item | json}}</p>
+</div>

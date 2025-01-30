@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.foodie.entity.MenuItems;
+import com.backend.foodie.entity.Restaurants;
 import com.backend.foodie.service.MenuItemsService;
+import com.backend.foodie.service.RestaurantService;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -29,6 +31,9 @@ import jakarta.persistence.EntityNotFoundException;
 public class MenuItemsController {
 	@Autowired
 	private MenuItemsService service;
+	
+	@Autowired
+	private RestaurantService restaurantService;
 	
 	@GetMapping
 	private ResponseEntity<Object> getAllMenuItems(){
@@ -46,6 +51,13 @@ public class MenuItemsController {
 			errorMap.put("error", e.getMessage());
 			return ResponseEntity.badRequest().body(errorMap);
 		}
+	}
+	
+	@GetMapping("/restaurant/{id}")
+	private ResponseEntity<Object> getMenuItemByRestauarant(@PathVariable int id){
+		Restaurants restaurant = restaurantService.getById(id);
+		List<MenuItems> MenuItems = service.getByRestaurant(restaurant);
+		return ResponseEntity.ok(MenuItems);
 	}
 	
 	@PostMapping

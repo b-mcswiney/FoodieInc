@@ -10,6 +10,19 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class MenuItems {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int id;
+	
+	@Column(length=150)
+	String name;
+	
+	double price;
+	
+	@ManyToOne
+	@JoinColumn(name="restaurant_id")
+	Restaurants restaurant;
 	
 	public MenuItems() {
 		super();
@@ -29,18 +42,6 @@ public class MenuItems {
 		this.price = price;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
-	
-	@Column(length=150)
-	String name;
-	
-	double price;
-	
-	@ManyToOne
-	@JoinColumn(name="restaurant_id")
-	Restaurants restaurant;
 	
 	public int getId() {
 		return id;

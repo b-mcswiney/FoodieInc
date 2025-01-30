@@ -1,6 +1,7 @@
-<p>restaurants works!</p>
+<h1>Restaurants near you!</h1>
 <div>
-    <div *ngFor="let restaurant of restaurants">
-        <p>{{restaurant |json}}</p>
+    <div *ngFor="let restaurant of restaurants" style="padding-bottom: 1%;">
+        <app-restaurant-card [restaurant]="restaurant"></app-restaurant-card>
+        <!-- <p>{{restaurant |json}}</p> -->
     </div>
 </div>

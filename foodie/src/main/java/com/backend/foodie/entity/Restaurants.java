@@ -23,7 +23,7 @@ public class Restaurants {
 	@Column(length=150)
 	String name;
 	@Column(length=500)
-	String Description;
+	String description;
 	
 	int rating;
 	
@@ -35,19 +35,21 @@ public class Restaurants {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Restaurants(String name, String address, int rating, String Description) {
+	public Restaurants(String name, String address, int rating, String description) {
 		super();
 		this.name = name;
 		this.address = address;
 		this.rating = rating;
+		this.description = description;
 	}
 	
-	public Restaurants(int id, String name, String address, int rating, String Description) {
+	public Restaurants(int id, String name, String address, int rating, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.rating = rating;
+		this.description = description;
 	}
 	
 	public int getId() {
@@ -76,7 +78,7 @@ public class Restaurants {
 	
 	@Override
 	public String toString() {
-		return "Restaurants [id=" + id + ", name="+name+", address=" + address + ", rating=" + rating +"]";
+		return "Restaurants [id=" + id + ", name="+name+", description="+description+", address=" + address + ", rating=" + rating +"]";
 	}
 
 	public String getName() {
@@ -85,5 +87,13 @@ public class Restaurants {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
