@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -18,7 +20,6 @@ public class FoodOrders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	List<String> items;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -28,6 +29,7 @@ public class FoodOrders {
 	@JoinColumn(name="restaurant_id")
 	Restaurants restaurant;
 	
+	List<Integer> items;
 	
 	LocalDateTime order_time;
 	
@@ -36,7 +38,7 @@ public class FoodOrders {
 		// TODO Auto-generated constructor stub
 	}
 
-	public FoodOrders(List<String> items,Users user, Restaurants restaurant, LocalDateTime order_time) {
+	public FoodOrders(List<Integer> items,Users user, Restaurants restaurant, LocalDateTime order_time) {
 		super();
 		this.items = items;
 		this.user = user;
@@ -44,7 +46,7 @@ public class FoodOrders {
 		this.order_time = order_time;
 	}
 
-	public FoodOrders(int id,List<String> items, Users user, Restaurants restaurant, LocalDateTime order_time) {
+	public FoodOrders(int id,List<Integer> items, Users user, Restaurants restaurant, LocalDateTime order_time) {
 		super();
 		this.id = id;
 		this.items = items;
@@ -87,11 +89,11 @@ public class FoodOrders {
 		this.order_time = order_time;
 	}
 
-	public List<String> getItems() {
+	public List<Integer> getItems() {
 		return items;
 	}
 	
-	public void setItems(List<String> items) {
+	public void setItems(List<Integer> items) {
 		this.items = items;
 	}
 

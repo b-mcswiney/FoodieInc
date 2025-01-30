@@ -1,6 +1,5 @@
 package com.backend.foodie.entity;
 
-import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -24,7 +23,6 @@ public class Restaurants {
 	@Column(length=150)
 	String name;
 	int rating;
-	List<String> menu;
 	
 	@OneToMany(mappedBy = "restaurant")
 	private Set<FoodOrders> orders;
@@ -34,21 +32,19 @@ public class Restaurants {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Restaurants(String name, String address, int rating, List<String> menu) {
+	public Restaurants(String name, String address, int rating) {
 		super();
 		this.name = name;
 		this.address = address;
 		this.rating = rating;
-		this.menu = menu;
 	}
 	
-	public Restaurants(int id, String name, String address, int rating, List<String> menu) {
+	public Restaurants(int id, String name, String address, int rating) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.rating = rating;
-		this.menu = menu;
 	}
 	
 	public int getId() {
@@ -75,17 +71,9 @@ public class Restaurants {
 		this.rating = rating;
 	}
 	
-	public List<String> getMenu() {
-		return menu;
-	}
-	
-	public void setMenu(List<String> menu) {
-		this.menu = menu;
-	}
-
 	@Override
 	public String toString() {
-		return "Restaurants [id=" + id + ", name="+name+", address=" + address + ", rating=" + rating + ", menu=" + menu + "]";
+		return "Restaurants [id=" + id + ", name="+name+", address=" + address + ", rating=" + rating +"]";
 	}
 
 	public String getName() {
