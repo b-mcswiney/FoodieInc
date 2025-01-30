@@ -22,6 +22,9 @@ public class Restaurants {
 	String address;
 	@Column(length=150)
 	String name;
+	@Column(length=500)
+	String Description;
+	
 	int rating;
 	
 	@OneToMany(mappedBy = "restaurant")
@@ -32,14 +35,14 @@ public class Restaurants {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Restaurants(String name, String address, int rating) {
+	public Restaurants(String name, String address, int rating, String Description) {
 		super();
 		this.name = name;
 		this.address = address;
 		this.rating = rating;
 	}
 	
-	public Restaurants(int id, String name, String address, int rating) {
+	public Restaurants(int id, String name, String address, int rating, String Description) {
 		super();
 		this.id = id;
 		this.name = name;
