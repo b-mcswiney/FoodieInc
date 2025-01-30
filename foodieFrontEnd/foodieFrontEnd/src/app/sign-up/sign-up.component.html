@@ -1,0 +1,49 @@
+<p>sign-up works!</p>
+<div class="container w-50">
+    <div class="card">
+        <div class="m-2">
+            <h2>Sign up</h2>
+        <form #loginform="ngForm" (submit)="onSubmit()">
+            <div class="mt-3">
+                <input type="text" class="form-control" [class.is-invalid]="username.touched && username.invalid" placeholder="enter username"
+                name="username" [(ngModel)]="usernameInput" required  #username="ngModel" minlength="3">
+                <div *ngIf="username.touched && username.errors && username.invalid">
+                    <small class="text-danger" *ngIf="username.errors['required']">
+                        Please Enter a valid username
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <input type="password" class="form-control" [class.is-invalid]="password.touched && password.invalid" placeholder="enter password"
+                name="password" [(ngModel)]="passwordInput" required  #password="ngModel" minlength="3">
+                <div *ngIf="password.touched && password.errors && password.invalid">
+                    <small class="text-danger" *ngIf="password.errors['required']">
+                        Please Enter a valid password
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <input type="text" class="form-control" [class.is-invalid]="address.touched && address.invalid" placeholder="enter address"
+                name="address" [(ngModel)]="addressInput" required  #address="ngModel" minlength="3">
+                <div *ngIf="address.touched && address.errors && address.invalid">
+                    <small class="text-danger" *ngIf="address.errors['required']">
+                        Please Enter your address
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <input type="text" class="form-control" [class.is-invalid]="email.touched && email.invalid" placeholder="enter email"
+                name="email" [(ngModel)]="emailInput" required  #email="ngModel" minlength="3">
+                <div *ngIf="email.touched && email.errors && email.invalid">
+                    <small class="text-danger" *ngIf="email.errors['required']">
+                        Please Enter your email
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button type="submit" class="btn" style="background-color: rgb(41, 40, 40); color: white;">sign-up</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

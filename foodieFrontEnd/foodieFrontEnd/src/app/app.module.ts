@@ -8,6 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RestaurantCardComponent } from './restaurant-card/restaurant-card.component';
 import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,12 +19,16 @@ import { RestaurantPageComponent } from './restaurant-page/restaurant-page.compo
     RestaurantsComponent,
     NavbarComponent,
     RestaurantCardComponent,
-    RestaurantPageComponent
+    RestaurantPageComponent,
+    PageNotFoundComponent,
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
