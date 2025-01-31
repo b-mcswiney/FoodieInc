@@ -82,10 +82,11 @@ public class RestaurantsController {
         }catch (EntityNotFoundException  e){
         	map.put("status", "404");
             map.put("error", e.getMessage());
-        }catch (Exception e){
+        }
+        catch (Exception e){
             if(e.getCause() != null && e.getCause().getCause() instanceof SQLIntegrityConstraintViolationException) {
 //                SQLIntegrityConstraintViolationException sql_violation_exception = (SQLIntegrityConstraintViolationException) e.getCause().getCause() ;
-                map.put("error", "SQLIntegrityConstraintViolationException has accured. Foreign key cpnstraint" );
+                map.put("error", "SQLIntegrityConstraintViolationException has accured. Foreign key constraint" );
             } else {
                 System.out.println(e.getMessage());
             }

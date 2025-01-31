@@ -9,6 +9,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { authGuard } from './service/auth.guard';
 import { AddRestaurantComponent } from './add-restaurant/add-restaurant.component';
 import { AddMenuItemComponent } from './add-menu-item/add-menu-item.component';
+import { EditRestaurantComponent } from './edit-restaurant/edit-restaurant.component';
 
 const routes: Routes = [
   {path: "", redirectTo:'restaurants', pathMatch:"full"},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: "orders/:id", component:MyOrdersComponent, canActivate:[authGuard]},
   {path: "add/restaurant", component:AddRestaurantComponent, canActivate:[authGuard]},
   {path: "add/menu", component:AddMenuItemComponent, canActivate:[authGuard]},
+  {path: "restaurants/edit/:id", component:EditRestaurantComponent, canActivate:[authGuard]},
   {path: "**", component:PageNotFoundComponent}
 ];
 

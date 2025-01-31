@@ -2,6 +2,7 @@ package com.backend.foodie.entity;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,8 +28,11 @@ public class Restaurants {
 	
 	int rating;
 	
-	@OneToMany(mappedBy = "restaurant")
+	@OneToMany(mappedBy = "restaurant", cascade=CascadeType.ALL, orphanRemoval=true)
 	private Set<FoodOrders> orders;
+	
+	@OneToMany(mappedBy = "restaurant", cascade=CascadeType.ALL, orphanRemoval=true)
+	private Set<MenuItems> items;
 	
 	public Restaurants() {
 		super();

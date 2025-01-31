@@ -23,4 +23,12 @@ export class RestaurantService {
   addRestaurant(toAdd:Restaurant):Observable<any>{
     return this.http.post<any>(this.url, toAdd);
   }
+
+  editRestaurant(toEdit:Restaurant):Observable<any>{
+    return this.http.put<any>(this.url, toEdit);
+  }
+
+  deleteRestaurant(id:any):Observable<any>{
+    return this.http.delete<any>(this.url + "/" + id);
+  }
 }
