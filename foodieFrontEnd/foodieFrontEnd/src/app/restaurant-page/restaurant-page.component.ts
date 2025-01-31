@@ -4,6 +4,7 @@ import { MenuService } from '../service/menu.service';
 import { Menu } from '../model/menu';
 import { Restaurant } from '../model/restaurant';
 import { RestaurantService } from '../service/restaurant.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-restaurant-page',
@@ -17,7 +18,7 @@ export class RestaurantPageComponent {
   restaurant:Restaurant = {id:1, name:"",description:"", address:"", rating:1, menu:""};
   menuItems:Menu[] = [];
 
-  constructor(private currentRoute: ActivatedRoute, public menuService:MenuService, public restaurantService:RestaurantService){}
+  constructor(private currentRoute: ActivatedRoute,public userService:UserService, public menuService:MenuService, public restaurantService:RestaurantService){}
 
   ngOnInit() {
     this.currentRoute.params.subscribe(params => {
@@ -36,5 +37,9 @@ export class RestaurantPageComponent {
       .subscribe(resp => {
         this.restaurant = resp;
       })
+  }
+
+  deleteItem(id:Number){
+
   }
 }

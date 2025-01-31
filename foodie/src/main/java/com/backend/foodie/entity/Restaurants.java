@@ -28,10 +28,10 @@ public class Restaurants {
 	
 	int rating;
 	
-	@OneToMany(mappedBy = "restaurant", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "restaurant", cascade=CascadeType.REMOVE, orphanRemoval=true)
 	private Set<FoodOrders> orders;
 	
-	@OneToMany(mappedBy = "restaurant", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "restaurant", cascade=CascadeType.REMOVE, orphanRemoval=true)
 	private Set<MenuItems> items;
 	
 	public Restaurants() {
