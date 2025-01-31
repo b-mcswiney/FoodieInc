@@ -21,16 +21,19 @@ export class LoginComponent {
 
   onSubmit(){
     console.log("login", this.usernameInput, this.passwordInput);
-    this.loginValid=true;
+    this.loginValid=false;
 
     this.userService.getUserByName(this.usernameInput)
     .subscribe({
       next: resp=>{
-        console.log(resp);
+        if(resp.status == 400){
+          this.loginValid = false;
+        }
         if(resp != undefined && resp.length != 0 && resp.username == this.usernameInput && resp.password == this.passwordInput) {
           localStorage.setItem("username", this.usernameInput);
           console.log(resp.id);
           localStorage.setItem("id", resp.id);
+          this.loginValid = true;
           this.router.navigate(['']);
         }
         else{

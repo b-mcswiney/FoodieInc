@@ -2,6 +2,7 @@
     <div class="card">
         <div class="m-2">
             <h1>Login</h1>
+            <p *ngIf="!loginValid" style="color: red;">Incorrect username or password.</p>
             <form #loginform = "ngForm" (submit)="onSubmit()">
                 <div class="mt-3">
                     <input type="text" class="form-control" [class.is-invalid]="username.touched && username.invalid" placeholder="enter username"
