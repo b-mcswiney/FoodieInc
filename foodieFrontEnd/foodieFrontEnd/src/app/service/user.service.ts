@@ -15,4 +15,19 @@ export class UserService {
   addUser(user:User):Observable<any> {
     return this.http.post<User>(this.url, user);
   }
+
+  getUserByName(name:string):Observable<any> {
+    return this.http.get(this.url + "/" + name);
+  }
+
+  isAuthenticated():boolean{
+    return !!localStorage.getItem("username");
+  }
+  getCurrentUserId(){
+    return localStorage.getItem("id");
+  }
+  logout(){
+    localStorage.removeItem("username");
+    localStorage.removeItem("id");
+  }
 }

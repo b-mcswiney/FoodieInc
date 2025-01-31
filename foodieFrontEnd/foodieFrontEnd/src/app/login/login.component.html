@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="container">
+    <div class="card">
+        <div class="m-2">
+            <h1>Login</h1>
+            <form #loginform = "ngForm" (submit)="onSubmit()">
+                <div class="mt-3">
+                    <input type="text" class="form-control" [class.is-invalid]="username.touched && username.invalid" placeholder="enter username"
+                    name="username" [(ngModel)]="usernameInput" required  #username="ngModel" minlength="3">
+                    <div *ngIf="username.touched && username.errors && username.invalid">
+                        <small class="text-danger" *ngIf="username.errors['required']">
+                            Please Enter a valid username
+                        </small>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <input type="password" class="form-control" [class.is-invalid]="password.touched && password.invalid" placeholder="enter password"
+                    name="password" [(ngModel)]="passwordInput" required  #password="ngModel" minlength="3">
+                    <div *ngIf="password.touched && password.errors && password.invalid">
+                        <small class="text-danger" *ngIf="password.errors['required']">
+                            Please Enter a valid password
+                        </small>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-primary" style="background-color: rgb(41, 40, 40); color: white;">login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
