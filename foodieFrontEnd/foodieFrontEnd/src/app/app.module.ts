@@ -13,6 +13,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { OrderItemsComponent } from './order-items/order-items.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
     PageNotFoundComponent,
     SignUpComponent,
     LoginComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    OrderItemsComponent
   ],
   imports: [
     BrowserModule,

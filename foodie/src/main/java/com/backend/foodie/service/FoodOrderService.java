@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.backend.foodie.entity.FoodOrders;
+import com.backend.foodie.entity.Users;
 import com.backend.foodie.repo.FoodOrdersRepo;
 
 import jakarta.persistence.EntityExistsException;
@@ -18,6 +19,10 @@ public class FoodOrderService {
 	
 	public List<FoodOrders> getAllFoodOrders() {
 		return repo.findAll();
+	}
+	
+	public List<FoodOrders> getByUser(Users user){
+		return repo.findByUser(user);
 	}
 	
 	public FoodOrders getById(int id) {

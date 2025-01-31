@@ -1,1 +1,8 @@
-<p>my-orders works!</p>
+<h1>Your Past Orders</h1>
+<div *ngFor="let item of orderItems" style="padding-bottom: 5px;">
+    <div class="card" style="padding: 1%;">
+        <h3>Order Date: {{item.order_time | date}} at {{item.order_time | date:'hh:mm'}}</h3>
+        <h5>Ordered From: {{item.restaurant.name}}</h5>
+        <app-order-items [order]="item"></app-order-items>
+    </div>
+</div>

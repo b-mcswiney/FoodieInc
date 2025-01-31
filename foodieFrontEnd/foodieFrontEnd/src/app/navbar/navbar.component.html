@@ -25,7 +25,7 @@
           <a class="nav-link active" style=" color: white;" aria-current="page" routerLink="/restaurants">Restaurants</a>
         </li>
         <li class="nav-item" *ngIf="userService.isAuthenticated()">
-          <a class="nav-link" style=" color: white;" routerLink="/orders/{{userService.getCurrentUserId()}}">My Order</a>
+          <a class="nav-link" style=" color: white;" routerLink="/orders/{{userService.getCurrentUserId()}}">My Orders</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="!userService.isAuthenticated()">

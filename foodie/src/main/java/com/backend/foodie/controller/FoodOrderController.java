@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.foodie.entity.FoodOrders;
+import com.backend.foodie.entity.Users;
 import com.backend.foodie.service.FoodOrderService;
+import com.backend.foodie.service.UserService;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -29,6 +31,8 @@ import jakarta.persistence.EntityNotFoundException;
 public class FoodOrderController {
 	@Autowired
 	private FoodOrderService service;
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping
 	private ResponseEntity<Object> getAllOrders(){
@@ -46,6 +50,13 @@ public class FoodOrderController {
 			errorMap.put("error", e.getMessage());
 			return ResponseEntity.badRequest().body(errorMap);
 		}
+	}
+	
+	@GetMapping("/user/{name}")
+	private ResponseEntity<Object> getByUser(@PathVariable String name){
+		Users user = userService.getUserByName(name);
+		List<FoodOrders> orders = service.getByUser(user);
+		return ResponseEntity.ok(orders);
 	}
 	
 	@PostMapping

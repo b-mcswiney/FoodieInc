@@ -14,6 +14,10 @@ export class MenuService {
     return this.http.get<any>(this.url);
   }
 
+  getMenuItemById(id:Number):Observable<any> {
+    return this.http.get<any>(this.url + "/" + id);
+  }
+
   getMenuItemsByRestaurant(id:Number):Observable<any> {
     return this.http.get<any>(this.url + "/restaurant/" + id);
   }
