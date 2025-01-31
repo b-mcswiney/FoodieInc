@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderItemsComponent } from './order-items/order-items.component';
+import { AddRestaurantComponent } from './add-restaurant/add-restaurant.component';
+import { AddMenuItemComponent } from './add-menu-item/add-menu-item.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { OrderItemsComponent } from './order-items/order-items.component';
     SignUpComponent,
     LoginComponent,
     MyOrdersComponent,
-    OrderItemsComponent
+    OrderItemsComponent,
+    AddRestaurantComponent,
+    AddMenuItemComponent
   ],
   imports: [
     BrowserModule,

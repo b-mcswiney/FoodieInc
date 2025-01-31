@@ -8,6 +8,11 @@
                 <p class="card-text"><b>Located:</b> {{restaurant.address}}, <b>Rating:</b> {{restaurant.rating}}</p>
             </div>
         </a>
+        <div *ngIf="userService.isAuthenticated()" class="card-body" style="display: flex; gap: 5px;">
+            <button routerLink="./edit/{{restaurant.id}}" class="btn btn-primary" style="background-color: rgb(41, 40, 40); color: white;">Edit</button>
+            <button class="btn btn-primary" style="background-color: rgb(41, 40, 40); color: white;">Delete</button>
+            <div><a class="link-underline-light" style="color:black;" routerLink="./{{restaurant.id}}"></a></div>
+        </div>
         <!-- <p>{{restaurant | json}}</p> -->
     </div>
 </div>

@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { authGuard } from './service/auth.guard';
+import { AddRestaurantComponent } from './add-restaurant/add-restaurant.component';
+import { AddMenuItemComponent } from './add-menu-item/add-menu-item.component';
 
 const routes: Routes = [
   {path: "", redirectTo:'restaurants', pathMatch:"full"},
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: "restaurants", component:RestaurantsComponent},
   {path: "restaurants/:id", component:RestaurantPageComponent},
   {path: "orders/:id", component:MyOrdersComponent, canActivate:[authGuard]},
+  {path: "add/restaurant", component:AddRestaurantComponent, canActivate:[authGuard]},
+  {path: "add/menu", component:AddMenuItemComponent, canActivate:[authGuard]},
   {path: "**", component:PageNotFoundComponent}
 ];
 

@@ -1,0 +1,48 @@
+<div class="container w-50">
+    <div class="card">
+        <div class="m-2">
+            <h2>Add Restaurant</h2>
+        <form #loginform="ngForm" (submit)="onSubmit()">
+            <div class="mt-3">
+                <input type="text" class="form-control" [class.is-invalid]="name.touched && name.invalid" placeholder="enter name"
+                name="name" [(ngModel)]="nameInput" required  #name="ngModel" minlength="3">
+                <div *ngIf="name.touched && name.errors && name.invalid">
+                    <small class="text-danger" *ngIf="name.errors['required']">
+                        Please Enter a valid name
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <input type="text" class="form-control" [class.is-invalid]="description.touched && description.invalid" placeholder="enter description"
+                name="description" [(ngModel)]="descriptionInput" required  #description="ngModel" minlength="3">
+                <div *ngIf="description.touched && description.errors && description.invalid">
+                    <small class="text-danger" *ngIf="description.errors['required']">
+                        Please Enter a valid descriptionInput
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <input type="text" class="form-control" [class.is-invalid]="address.touched && address.invalid" placeholder="enter address"
+                name="address" [(ngModel)]="addressInput" required  #address="ngModel" minlength="3">
+                <div *ngIf="address.touched && address.errors && address.invalid">
+                    <small class="text-danger" *ngIf="address.errors['required']">
+                        Please Enter your address
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <input type="text" class="form-control" [class.is-invalid]="rating.touched && rating.invalid" placeholder="enter rating"
+                name="rating" [(ngModel)]="ratingInput" required  #rating="ngModel">
+                <div *ngIf="rating.touched && rating.errors && rating.invalid">
+                    <small class="text-danger" *ngIf="rating.errors['required']">
+                        Please Enter your ratingInput
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button type="submit" class="btn" style="background-color: rgb(41, 40, 40); color: white;">add</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

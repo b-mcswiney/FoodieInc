@@ -27,6 +27,12 @@
         <li class="nav-item" *ngIf="userService.isAuthenticated()">
           <a class="nav-link" style=" color: white;" routerLink="/orders/{{userService.getCurrentUserId()}}">My Orders</a>
         </li>
+        <li class="nav-item" *ngIf="userService.isAuthenticated()">
+          <a class="nav-link" style=" color: white;" routerLink="/add/restaurant">Add Restaurant</a>
+        </li>
+        <li class="nav-item" *ngIf="userService.isAuthenticated()">
+          <a class="nav-link" style=" color: white;" routerLink="/add/menu">Add Menu Item</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="!userService.isAuthenticated()">
         <li><a class="nav-link" style=" color: white;" routerLink="/signup">

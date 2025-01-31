@@ -37,7 +37,7 @@ public class FoodieApplication {
 
 	@PostConstruct
 	public void initialize() {
-		Users u1 = new Users("jim", "password", "jim@example.com", "jim's house");
+		Users u1 = new Users("admin", "password", "jim@example.com", "jim's house");
 		Restaurants r1 = new Restaurants("John's burgers","John's van",10, "John's tasty burger van");
 		Restaurants r2 = new Restaurants("Not McDonalds","1800 not Street",7, "Definitely not McDonalds");
 		Restaurants r3 = new Restaurants("Jane's Spuds","Jane's house",10, "Jane is serving tasty potatoes from her window! WOW!");

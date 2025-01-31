@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Restaurant } from '../model/restaurant';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class RestaurantService {
 
   getRestaurantById(id:Number):Observable<any>{
     return this.http.get<any>(this.url+"/"+id);
+  }
+
+  addRestaurant(toAdd:Restaurant):Observable<any>{
+    return this.http.post<any>(this.url, toAdd);
   }
 }
