@@ -1,6 +1,9 @@
 package com.backend.foodie.entity;
 
+import java.util.List;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -29,10 +32,12 @@ public class Restaurants {
 	int rating;
 	
 	@OneToMany(mappedBy = "restaurant", cascade=CascadeType.REMOVE, orphanRemoval=true)
+	@JsonIgnore
 	private Set<FoodOrders> orders;
 	
 	@OneToMany(mappedBy = "restaurant", cascade=CascadeType.REMOVE, orphanRemoval=true)
-	private Set<MenuItems> items;
+	@JsonIgnore
+	private List<MenuItems> items;
 	
 	public Restaurants() {
 		super();
@@ -82,7 +87,7 @@ public class Restaurants {
 	
 	@Override
 	public String toString() {
-		return "Restaurants [id=" + id + ", name="+name+", description="+description+", address=" + address + ", rating=" + rating +"]";
+		return "Restaurants [id=" + id + ", name="+name+", description="+description+", address=" + address + ", rating=" + rating +", items="+items+"]";
 	}
 
 	public String getName() {
@@ -99,5 +104,21 @@ public class Restaurants {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Set<FoodOrders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<FoodOrders> orders) {
+		this.orders = orders;
+	}
+
+	public List<MenuItems> getItems() {
+		return items;
+	}
+
+	public void setItems(List<MenuItems> items) {
+		this.items = items;
 	}
 }

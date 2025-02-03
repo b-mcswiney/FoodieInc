@@ -1,6 +1,6 @@
 export interface Menu{
-    id:Number,
+    id:any,
     name:String,
-    price:Number,
+    price:number,
     restaurant:any
 }

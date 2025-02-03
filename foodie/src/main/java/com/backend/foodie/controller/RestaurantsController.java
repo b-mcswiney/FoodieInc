@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.foodie.entity.Restaurants;
+import com.backend.foodie.service.MenuItemsService;
 import com.backend.foodie.service.RestaurantService;
 
 import jakarta.persistence.EntityExistsException;
@@ -29,6 +30,9 @@ import jakarta.persistence.EntityNotFoundException;
 public class RestaurantsController {
 	@Autowired
 	private RestaurantService service;
+	
+	@Autowired
+	private MenuItemsService itemService;
 	
 	@GetMapping
 	private ResponseEntity<Object> getAllRestaurants(){
@@ -63,6 +67,10 @@ public class RestaurantsController {
 	@PutMapping
 	public ResponseEntity<Object> updateRestaurant(@RequestBody Restaurants toUpdate){
 		try {
+			System.out.println(toUpdate.toString());
+			if(toUpdate.getItems() == null) {
+				toUpdate.setItems(itemService.getByRestaurant(toUpdate));
+			}
 			Restaurants updated = service.updateRestaurant(toUpdate);
 			return ResponseEntity.ok(updated);
 		} catch(EntityNotFoundException e) {
