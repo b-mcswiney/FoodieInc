@@ -8,7 +8,7 @@ import { Restaurant } from '../model/restaurant';
 })
 export class RestaurantService {
 
-  url:string = "http://localhost:8080/restaurants"
+  url:string = "http://localhost:9090/restaurants"
 
   constructor(private http:HttpClient) { }
 

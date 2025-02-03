@@ -8,7 +8,7 @@ import { catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  url:string = "http://localhost:8080/users"
+  url:string = "http://localhost:9090/users"
   
   constructor(private http:HttpClient) { }
   

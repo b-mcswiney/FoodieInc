@@ -7,7 +7,7 @@ import { Menu } from '../model/menu';
   providedIn: 'root'
 })
 export class MenuService {
-  url:string = "http://localhost:8080/menu"
+  url:string = "http://localhost:9090/menu"
 
   constructor(private http:HttpClient) { }
 

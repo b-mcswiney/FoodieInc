@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
-  url:string = "http://localhost:8080/foodorders"
+  url:string = "http://localhost:9090/foodorders"
 
 
   constructor(private http:HttpClient) { }
