@@ -2,7 +2,7 @@
     <h6>{{item.name}}</h6>
     <p>£{{item.price}}</p>
     <div *ngIf="userService.isAuthenticated()" class="card-body" style="display: flex; gap: 5px;">
-        <button routerLink="./edit/{{item.id}}" class="btn btn-primary" style="background-color: rgb(41, 40, 40); color: white;">Edit</button>
+        <button routerLink="/menu/edit/{{item.id}}" class="btn btn-primary" style="background-color: rgb(41, 40, 40); color: white;">Edit</button>
         <button class="btn btn-primary" style="background-color: rgb(41, 40, 40); color: white;" (click)="deleteItem()">Delete</button>
     </div>
 </div>

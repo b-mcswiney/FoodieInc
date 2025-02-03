@@ -27,6 +27,10 @@ export class MenuService {
     return this.http.post(this.url, toAdd);
   }
 
+  editMenuItem(toUpdate:Menu):Observable<any> {
+    return this.http.put(this.url, toUpdate);
+  }
+
   deleteMenuItem(id:number):Observable<any> {
     return this.http.delete<any>(this.url+"/"+id);
   }
