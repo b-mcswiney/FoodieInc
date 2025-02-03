@@ -26,4 +26,8 @@ export class MenuService {
   addMenuItem(toAdd:Menu):Observable<any> {
     return this.http.post(this.url, toAdd);
   }
+
+  deleteMenuItem(id:number):Observable<any> {
+    return this.http.delete<any>(this.url+"/"+id);
+  }
 }

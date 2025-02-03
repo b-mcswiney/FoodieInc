@@ -38,8 +38,4 @@ export class RestaurantPageComponent {
         this.restaurant = resp;
       })
   }
-
-  deleteItem(id:Number){
-
-  }
 }
